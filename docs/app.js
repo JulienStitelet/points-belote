@@ -104,8 +104,8 @@ let pointsAudio = null;
 
 function initAudio() {
     if (!cardAudio) {
-        cardAudio = new Audio('resources/card.wav');
-        pointsAudio = new Audio('resources/points.wav');
+        cardAudio = new Audio('resources/cardonly.wav');
+        pointsAudio = new Audio('resources/cardpoints.wav');
         console.log('Audio initialized with WAV files');
     }
 }
