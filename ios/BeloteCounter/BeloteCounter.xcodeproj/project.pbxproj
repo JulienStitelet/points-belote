@@ -23,6 +23,7 @@
 		CB344AFC2FC58C6C00C9CF10 /* sound_20.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB344AF62FC58C6C00C9CF10 /* sound_20.wav */; };
 		CB344AFD2FC58C6C00C9CF10 /* sound_10.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB344AF32FC58C6C00C9CF10 /* sound_10.wav */; };
 		CB344B012FC5979E00C9CF10 /* splash_screen.png in Resources */ = {isa = PBXBuildFile; fileRef = CB344B002FC5979E00C9CF10 /* splash_screen.png */; };
+		CB344B032FC5979E00C9CF10 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB344B022FC5979E00C9CF10 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		CB344AF62FC58C6C00C9CF10 /* sound_20.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sound_20.wav; sourceTree = "<group>"; };
 		CB344AF72FC58C6C00C9CF10 /* sound_low.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sound_low.wav; sourceTree = "<group>"; };
 		CB344B002FC5979E00C9CF10 /* splash_screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_screen.png; sourceTree = "<group>"; };
+		CB344B022FC5979E00C9CF10 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CC0001 /* BeloteCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeloteCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -83,6 +85,7 @@
 				BB0005 /* CameraView.swift */,
 				BB0006 /* PlayingCardsModel.mlpackage */,
 				BB0007 /* Assets.xcassets */,
+				CB344B022FC5979E00C9CF10 /* LaunchScreen.storyboard */,
 			);
 			path = BeloteCounter;
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 				CB344AF82FC58C6C00C9CF10 /* sound_14.wav in Resources */,
 				CB344AF92FC58C6C00C9CF10 /* sound_0.wav in Resources */,
 				CB344B012FC5979E00C9CF10 /* splash_screen.png in Resources */,
+				CB344B032FC5979E00C9CF10 /* LaunchScreen.storyboard in Resources */,
 				CB344AFA2FC58C6C00C9CF10 /* sound_low.wav in Resources */,
 				CB344AFB2FC58C6C00C9CF10 /* sound_11.wav in Resources */,
 				CB344AFC2FC58C6C00C9CF10 /* sound_20.wav in Resources */,
@@ -320,7 +324,7 @@
 				INFOPLIST_KEY_NSCameraUsageDescription = "Nécessaire pour détecter les cartes de Belote";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -352,7 +356,7 @@
 				INFOPLIST_KEY_NSCameraUsageDescription = "Nécessaire pour détecter les cartes de Belote";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
