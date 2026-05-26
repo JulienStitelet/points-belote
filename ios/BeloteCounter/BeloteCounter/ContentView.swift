@@ -171,6 +171,7 @@ struct ContentView: View {
             "sound_low"   // Points faibles (Roi, Dame)
         ]
 
+        print("🔊 Loading audio files...")
         for soundName in soundFiles {
             if let path = Bundle.main.path(forResource: soundName, ofType: "wav") {
                 let url = URL(fileURLWithPath: path)
@@ -182,8 +183,11 @@ struct ContentView: View {
                 } catch {
                     print("❌ Failed to load \(soundName).wav: \(error)")
                 }
+            } else {
+                print("⚠️ File not found in bundle: \(soundName).wav")
             }
         }
+        print("🔊 Total loaded: \(audioPlayers.count)/\(soundFiles.count)")
     }
 
     private func playSoundForPoints(_ points: Int) {
@@ -206,9 +210,15 @@ struct ContentView: View {
             soundName = "sound_low"  // Fallback
         }
 
+        print("🎵 Playing sound for \(points) points: \(soundName)")
+
         if let player = audioPlayers[soundName] {
             player.currentTime = 0
             player.play()
+            print("✅ Playing \(soundName)")
+        } else {
+            print("❌ No player found for \(soundName)")
+            print("Available players: \(audioPlayers.keys.joined(separator: ", "))")
         }
     }
 }
@@ -217,25 +227,32 @@ struct ModeSelectorView: View {
     let selectedMode: (BeloteMode) -> Void
 
     var body: some View {
-        VStack(spacing: 20) {
-            Text("Choisissez un mode")
-                .font(.largeTitle)
-                .padding()
+        ZStack {
+            // Background color #000b2e
+            Color(red: 0/255, green: 11/255, blue: 46/255)
+                .ignoresSafeArea()
 
-            ForEach(BeloteMode.allCases, id: \.self) { mode in
-                Button(action: {
-                    selectedMode(mode)
-                }) {
-                    Text(mode.displayName)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
+            VStack(spacing: 20) {
+                Text("Choisissez un mode")
+                    .font(.largeTitle)
+                    .foregroundColor(.white)
+                    .padding()
+
+                ForEach(BeloteMode.allCases, id: \.self) { mode in
+                    Button(action: {
+                        selectedMode(mode)
+                    }) {
+                        Text(mode.displayName)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                    }
                 }
             }
+            .padding()
         }
-        .padding()
     }
 }
 

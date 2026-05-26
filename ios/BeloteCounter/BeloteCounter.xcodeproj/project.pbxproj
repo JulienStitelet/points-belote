@@ -16,6 +16,13 @@
 		AA0007 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB0007 /* Assets.xcassets */; };
 		CB344AEE2FC5871F00C9CF10 /* detected_card.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB344AEC2FC5871F00C9CF10 /* detected_card.wav */; };
 		CB344AEF2FC5871F00C9CF10 /* points_card.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB344AED2FC5871F00C9CF10 /* points_card.wav */; };
+		CB344AF12FC58C1500C9CF10 /* belote_vision.png in Resources */ = {isa = PBXBuildFile; fileRef = CB344AF02FC58C1400C9CF10 /* belote_vision.png */; };
+		CB344AF82FC58C6C00C9CF10 /* sound_14.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB344AF52FC58C6C00C9CF10 /* sound_14.wav */; };
+		CB344AF92FC58C6C00C9CF10 /* sound_0.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB344AF22FC58C6C00C9CF10 /* sound_0.wav */; };
+		CB344AFA2FC58C6C00C9CF10 /* sound_low.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB344AF72FC58C6C00C9CF10 /* sound_low.wav */; };
+		CB344AFB2FC58C6C00C9CF10 /* sound_11.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB344AF42FC58C6C00C9CF10 /* sound_11.wav */; };
+		CB344AFC2FC58C6C00C9CF10 /* sound_20.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB344AF62FC58C6C00C9CF10 /* sound_20.wav */; };
+		CB344AFD2FC58C6C00C9CF10 /* sound_10.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB344AF32FC58C6C00C9CF10 /* sound_10.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +35,13 @@
 		BB0007 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB344AEC2FC5871F00C9CF10 /* detected_card.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = detected_card.wav; sourceTree = "<group>"; };
 		CB344AED2FC5871F00C9CF10 /* points_card.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = points_card.wav; sourceTree = "<group>"; };
+		CB344AF02FC58C1400C9CF10 /* belote_vision.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = belote_vision.png; sourceTree = "<group>"; };
+		CB344AF22FC58C6C00C9CF10 /* sound_0.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sound_0.wav; sourceTree = "<group>"; };
+		CB344AF32FC58C6C00C9CF10 /* sound_10.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sound_10.wav; sourceTree = "<group>"; };
+		CB344AF42FC58C6C00C9CF10 /* sound_11.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sound_11.wav; sourceTree = "<group>"; };
+		CB344AF52FC58C6C00C9CF10 /* sound_14.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sound_14.wav; sourceTree = "<group>"; };
+		CB344AF62FC58C6C00C9CF10 /* sound_20.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sound_20.wav; sourceTree = "<group>"; };
+		CB344AF72FC58C6C00C9CF10 /* sound_low.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sound_low.wav; sourceTree = "<group>"; };
 		CC0001 /* BeloteCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeloteCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -45,6 +59,13 @@
 		EE0001 = {
 			isa = PBXGroup;
 			children = (
+				CB344AF22FC58C6C00C9CF10 /* sound_0.wav */,
+				CB344AF32FC58C6C00C9CF10 /* sound_10.wav */,
+				CB344AF42FC58C6C00C9CF10 /* sound_11.wav */,
+				CB344AF52FC58C6C00C9CF10 /* sound_14.wav */,
+				CB344AF62FC58C6C00C9CF10 /* sound_20.wav */,
+				CB344AF72FC58C6C00C9CF10 /* sound_low.wav */,
+				CB344AF02FC58C1400C9CF10 /* belote_vision.png */,
 				CB344AEC2FC5871F00C9CF10 /* detected_card.wav */,
 				CB344AED2FC5871F00C9CF10 /* points_card.wav */,
 				EE0002 /* BeloteCounter */,
@@ -133,7 +154,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA0007 /* Assets.xcassets in Resources */,
+				CB344AF82FC58C6C00C9CF10 /* sound_14.wav in Resources */,
+				CB344AF92FC58C6C00C9CF10 /* sound_0.wav in Resources */,
+				CB344AFA2FC58C6C00C9CF10 /* sound_low.wav in Resources */,
+				CB344AFB2FC58C6C00C9CF10 /* sound_11.wav in Resources */,
+				CB344AFC2FC58C6C00C9CF10 /* sound_20.wav in Resources */,
+				CB344AFD2FC58C6C00C9CF10 /* sound_10.wav in Resources */,
 				CB344AEE2FC5871F00C9CF10 /* detected_card.wav in Resources */,
+				CB344AF12FC58C1500C9CF10 /* belote_vision.png in Resources */,
 				CB344AEF2FC5871F00C9CF10 /* points_card.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
