@@ -5,6 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "coremltools>=9.0",
     "huggingface-hub>=1.16.1",
     "onnx>=1.21.0",
     "onnxruntime>=1.26.0",

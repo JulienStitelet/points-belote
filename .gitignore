@@ -17,3 +17,4 @@ wheels/
 
 # Claude
 .claude/
+.DS_Store
