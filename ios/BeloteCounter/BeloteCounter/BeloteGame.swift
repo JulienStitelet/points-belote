@@ -34,12 +34,12 @@ enum BeloteMode: String, CaseIterable {
 // MARK: - Points Table
 struct CardPoints {
     static let points: [String: [Int]] = [
-        "J": [20, 2, 2, 20],   // atout, non-atout, sans-atout, tout-atout
-        "9": [14, 0, 0, 14],
-        "A": [11, 11, 11, 11],
-        "10": [10, 10, 10, 10],
-        "K": [4, 4, 4, 4],
-        "Q": [3, 3, 3, 3],
+        "J": [20, 2, 2, 14],   // atout, non-atout, sans-atout, tout-atout
+        "9": [14, 0, 0, 9],
+        "A": [11, 11, 19, 6],
+        "10": [10, 10, 10, 5],
+        "K": [4, 4, 4, 3],
+        "Q": [3, 3, 3, 1],
         "8": [0, 0, 0, 0],
         "7": [0, 0, 0, 0]
     ]
