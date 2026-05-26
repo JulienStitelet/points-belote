@@ -257,15 +257,10 @@ struct ContentView: View {
         guard !game.cardsPlayed.isEmpty else { return }
 
         let cardsTotal = game.totalPoints
-        let beloteBonus = beloteRebeloteCount * 20
-        let grandTotal = cardsTotal + beloteBonus
+        let others = 162 - cardsTotal
 
         let text: String
-        if beloteBonus > 0 {
-            text = "\(cardsTotal) points plus \(beloteBonus) points de belote rebelote égale \(grandTotal) points"
-        } else {
-            text = "\(cardsTotal) points"
-        }
+        text = "\(cardsTotal) points. Les autres ont \(others) points"
 
         print("🗣 Announcing total: \(text)")
         speak(text)
