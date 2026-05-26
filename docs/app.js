@@ -195,6 +195,8 @@ function showLastCard(card, points) {
 // Camera handling
 let stream = null;
 let animationId = null;
+let frameCount = 0;
+const FRAME_SKIP = 2;  // Run detection every 2 frames for better performance
 
 async function startCamera() {
     try {
@@ -236,8 +238,14 @@ async function detectLoop() {
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
 
-    // Run detection
-    const detections = await detector.detect(video);
+    // Frame skipping for performance
+    frameCount++;
+    let detections = [];
+
+    if (frameCount % FRAME_SKIP === 0) {
+        // Run detection only every FRAME_SKIP frames
+        detections = await detector.detect(video);
+    }
 
     // Clear canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);

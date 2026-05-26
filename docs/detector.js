@@ -28,37 +28,38 @@ class CardDetector {
         if (!this.session) return [];
 
         try {
-            // Prepare input tensor from video
+            // Prepare input tensor from video (reduced resolution for performance)
+            const inputSize = 416;  // Reduced from 640 to 416 for faster inference
             const canvas = document.createElement('canvas');
-            canvas.width = 640;
-            canvas.height = 640;
+            canvas.width = inputSize;
+            canvas.height = inputSize;
             const ctx = canvas.getContext('2d');
 
-            // Draw video frame to canvas (letterbox to 640x640)
-            const scale = Math.min(640 / videoElement.videoWidth, 640 / videoElement.videoHeight);
+            // Draw video frame to canvas (letterbox to inputSize x inputSize)
+            const scale = Math.min(inputSize / videoElement.videoWidth, inputSize / videoElement.videoHeight);
             const w = videoElement.videoWidth * scale;
             const h = videoElement.videoHeight * scale;
-            const x = (640 - w) / 2;
-            const y = (640 - h) / 2;
+            const x = (inputSize - w) / 2;
+            const y = (inputSize - h) / 2;
 
             ctx.fillStyle = '#000';
-            ctx.fillRect(0, 0, 640, 640);
+            ctx.fillRect(0, 0, inputSize, inputSize);
             ctx.drawImage(videoElement, x, y, w, h);
 
             // Get image data and normalize
-            const imageData = ctx.getImageData(0, 0, 640, 640);
+            const imageData = ctx.getImageData(0, 0, inputSize, inputSize);
             const data = imageData.data;
-            const input = new Float32Array(3 * 640 * 640);
+            const input = new Float32Array(3 * inputSize * inputSize);
 
             // Convert RGBA to RGB and normalize [0-255] to [0-1]
-            for (let i = 0; i < 640 * 640; i++) {
+            for (let i = 0; i < inputSize * inputSize; i++) {
                 input[i] = data[i * 4] / 255.0;                    // R
-                input[640 * 640 + i] = data[i * 4 + 1] / 255.0;   // G
-                input[640 * 640 * 2 + i] = data[i * 4 + 2] / 255.0; // B
+                input[inputSize * inputSize + i] = data[i * 4 + 1] / 255.0;   // G
+                input[inputSize * inputSize * 2 + i] = data[i * 4 + 2] / 255.0; // B
             }
 
             // Create tensor
-            const tensor = new ort.Tensor('float32', input, [1, 3, 640, 640]);
+            const tensor = new ort.Tensor('float32', input, [1, 3, inputSize, inputSize]);
 
             // Run inference
             const feeds = {};
