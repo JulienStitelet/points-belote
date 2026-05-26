@@ -10,9 +10,8 @@ struct ContentView: View {
     private let detector = CardDetector()
     private var frameSkipCounter = 0
 
-    // Audio players for custom sounds
-    @State private var detectedCardPlayer: AVAudioPlayer?
-    @State private var pointsCardPlayer: AVAudioPlayer?
+    // Audio players for custom sounds (by point value)
+    @State private var audioPlayers: [String: AVAudioPlayer] = [:]
 
     // Stability tracking
     @State private var lastDetectedCard: String?
@@ -137,12 +136,8 @@ struct ContentView: View {
                             validatedCards.insert(cardClass)
                             let points = game.addCard(cardClass)
 
-                            // Play sound feedback
-                            if points > 0 {
-                                playCardSound()
-                            } else {
-                                playPointsSound()
-                            }
+                            // Play sound feedback based on points
+                            playSoundForPoints(points)
 
                             // Reset stability after validation
                             lastDetectedCard = nil
@@ -167,41 +162,54 @@ struct ContentView: View {
     }
 
     private func loadAudioFiles() {
-        // Load detected_card.wav (0 points)
-        if let detectedPath = Bundle.main.path(forResource: "detected_card", ofType: "wav") {
-            let detectedURL = URL(fileURLWithPath: detectedPath)
-            do {
-                detectedCardPlayer = try AVAudioPlayer(contentsOf: detectedURL)
-                detectedCardPlayer?.prepareToPlay()
-                print("✅ Loaded detected_card.wav")
-            } catch {
-                print("❌ Failed to load detected_card.wav: \(error)")
-            }
-        }
+        let soundFiles = [
+            "sound_0",    // 0 points
+            "sound_10",   // 10 points
+            "sound_11",   // 11 points (As)
+            "sound_14",   // 14 points (9 d'atout)
+            "sound_20",   // 20 points (Valet d'atout)
+            "sound_low"   // Points faibles (Roi, Dame)
+        ]
 
-        // Load points_card.wav (with points)
-        if let pointsPath = Bundle.main.path(forResource: "points_card", ofType: "wav") {
-            let pointsURL = URL(fileURLWithPath: pointsPath)
-            do {
-                pointsCardPlayer = try AVAudioPlayer(contentsOf: pointsURL)
-                pointsCardPlayer?.prepareToPlay()
-                print("✅ Loaded points_card.wav")
-            } catch {
-                print("❌ Failed to load points_card.wav: \(error)")
+        for soundName in soundFiles {
+            if let path = Bundle.main.path(forResource: soundName, ofType: "wav") {
+                let url = URL(fileURLWithPath: path)
+                do {
+                    let player = try AVAudioPlayer(contentsOf: url)
+                    player.prepareToPlay()
+                    audioPlayers[soundName] = player
+                    print("✅ Loaded \(soundName).wav")
+                } catch {
+                    print("❌ Failed to load \(soundName).wav: \(error)")
+                }
             }
         }
     }
 
-    private func playCardSound() {
-        // Play custom sound for card with points
-        pointsCardPlayer?.currentTime = 0
-        pointsCardPlayer?.play()
-    }
+    private func playSoundForPoints(_ points: Int) {
+        let soundName: String
 
-    private func playPointsSound() {
-        // Play custom sound for card without points
-        detectedCardPlayer?.currentTime = 0
-        detectedCardPlayer?.play()
+        switch points {
+        case 0:
+            soundName = "sound_0"
+        case 10:
+            soundName = "sound_10"
+        case 11:
+            soundName = "sound_11"
+        case 14:
+            soundName = "sound_14"
+        case 20:
+            soundName = "sound_20"
+        case 1...4:
+            soundName = "sound_low"  // Roi, Dame, 8, 7
+        default:
+            soundName = "sound_low"  // Fallback
+        }
+
+        if let player = audioPlayers[soundName] {
+            player.currentTime = 0
+            player.play()
+        }
     }
 }
 
