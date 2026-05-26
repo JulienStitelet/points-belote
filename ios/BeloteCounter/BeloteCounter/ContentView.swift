@@ -10,6 +10,10 @@ struct ContentView: View {
     private let detector = CardDetector()
     private var frameSkipCounter = 0
 
+    // Audio players for custom sounds
+    @State private var detectedCardPlayer: AVAudioPlayer?
+    @State private var pointsCardPlayer: AVAudioPlayer?
+
     var body: some View {
         ZStack {
             if showModeSelector {
@@ -98,6 +102,7 @@ struct ContentView: View {
         }
         .onAppear {
             requestCameraPermission()
+            loadAudioFiles()
         }
     }
 
@@ -137,14 +142,42 @@ struct ContentView: View {
         }
     }
 
+    private func loadAudioFiles() {
+        // Load detected_card.wav (0 points)
+        if let detectedPath = Bundle.main.path(forResource: "detected_card", ofType: "wav") {
+            let detectedURL = URL(fileURLWithPath: detectedPath)
+            do {
+                detectedCardPlayer = try AVAudioPlayer(contentsOf: detectedURL)
+                detectedCardPlayer?.prepareToPlay()
+                print("✅ Loaded detected_card.wav")
+            } catch {
+                print("❌ Failed to load detected_card.wav: \(error)")
+            }
+        }
+
+        // Load points_card.wav (with points)
+        if let pointsPath = Bundle.main.path(forResource: "points_card", ofType: "wav") {
+            let pointsURL = URL(fileURLWithPath: pointsPath)
+            do {
+                pointsCardPlayer = try AVAudioPlayer(contentsOf: pointsURL)
+                pointsCardPlayer?.prepareToPlay()
+                print("✅ Loaded points_card.wav")
+            } catch {
+                print("❌ Failed to load points_card.wav: \(error)")
+            }
+        }
+    }
+
     private func playCardSound() {
-        // Play system sound for card with points
-        AudioServicesPlaySystemSound(1104)
+        // Play custom sound for card with points
+        pointsCardPlayer?.currentTime = 0
+        pointsCardPlayer?.play()
     }
 
     private func playPointsSound() {
-        // Play system sound for card without points
-        AudioServicesPlaySystemSound(1105)
+        // Play custom sound for card without points
+        detectedCardPlayer?.currentTime = 0
+        detectedCardPlayer?.play()
     }
 }
 

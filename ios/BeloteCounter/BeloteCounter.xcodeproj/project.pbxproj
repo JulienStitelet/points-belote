@@ -14,10 +14,11 @@
 		AA0005 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0005 /* CameraView.swift */; };
 		AA0006 /* PlayingCardsModel.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = BB0006 /* PlayingCardsModel.mlpackage */; };
 		AA0007 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB0007 /* Assets.xcassets */; };
+		AA0008 /* detected_card.wav in Resources */ = {isa = PBXBuildFile; fileRef = BB0008 /* detected_card.wav */; };
+		AA0009 /* points_card.wav in Resources */ = {isa = PBXBuildFile; fileRef = BB0009 /* points_card.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CC0001 /* BeloteCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeloteCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB0001 /* BeloteCounterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeloteCounterApp.swift; sourceTree = "<group>"; };
 		BB0002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BB0003 /* BeloteGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeloteGame.swift; sourceTree = "<group>"; };
@@ -25,6 +26,7 @@
 		BB0005 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		BB0006 /* PlayingCardsModel.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = PlayingCardsModel.mlpackage; sourceTree = "<group>"; };
 		BB0007 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CC0001 /* BeloteCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeloteCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,8 +278,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = Q24SGUMAZQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Points Belote";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Nécessaire pour détecter les cartes de Belote";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -305,8 +310,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = Q24SGUMAZQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Points Belote";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Nécessaire pour détecter les cartes de Belote";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -329,20 +337,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		GG0002 /* Build configuration list for PBXProject "BeloteCounter" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				HH0001 /* Debug */,
-				HH0002 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		FF0002 /* Build configuration list for PBXNativeTarget "BeloteCounter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				II0001 /* Debug */,
 				II0002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		GG0002 /* Build configuration list for PBXProject "BeloteCounter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				HH0001 /* Debug */,
+				HH0002 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
