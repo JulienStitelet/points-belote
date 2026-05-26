@@ -14,8 +14,8 @@
 		AA0005 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0005 /* CameraView.swift */; };
 		AA0006 /* PlayingCardsModel.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = BB0006 /* PlayingCardsModel.mlpackage */; };
 		AA0007 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB0007 /* Assets.xcassets */; };
-		AA0008 /* detected_card.wav in Resources */ = {isa = PBXBuildFile; fileRef = BB0008 /* detected_card.wav */; };
-		AA0009 /* points_card.wav in Resources */ = {isa = PBXBuildFile; fileRef = BB0009 /* points_card.wav */; };
+		CB344AEE2FC5871F00C9CF10 /* detected_card.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB344AEC2FC5871F00C9CF10 /* detected_card.wav */; };
+		CB344AEF2FC5871F00C9CF10 /* points_card.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB344AED2FC5871F00C9CF10 /* points_card.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +26,8 @@
 		BB0005 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		BB0006 /* PlayingCardsModel.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = PlayingCardsModel.mlpackage; sourceTree = "<group>"; };
 		BB0007 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CB344AEC2FC5871F00C9CF10 /* detected_card.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = detected_card.wav; sourceTree = "<group>"; };
+		CB344AED2FC5871F00C9CF10 /* points_card.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = points_card.wav; sourceTree = "<group>"; };
 		CC0001 /* BeloteCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeloteCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -43,6 +45,8 @@
 		EE0001 = {
 			isa = PBXGroup;
 			children = (
+				CB344AEC2FC5871F00C9CF10 /* detected_card.wav */,
+				CB344AED2FC5871F00C9CF10 /* points_card.wav */,
 				EE0002 /* BeloteCounter */,
 				EE0003 /* Products */,
 			);
@@ -129,6 +133,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA0007 /* Assets.xcassets in Resources */,
+				CB344AEE2FC5871F00C9CF10 /* detected_card.wav in Resources */,
+				CB344AEF2FC5871F00C9CF10 /* points_card.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

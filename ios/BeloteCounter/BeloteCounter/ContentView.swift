@@ -14,6 +14,11 @@ struct ContentView: View {
     @State private var detectedCardPlayer: AVAudioPlayer?
     @State private var pointsCardPlayer: AVAudioPlayer?
 
+    // Stability tracking
+    @State private var lastDetectedCard: String?
+    @State private var consecutiveFrames = 0
+    private let stabilityFramesRequired = 5  // Require 5 consecutive frames
+
     var body: some View {
         ZStack {
             if showModeSelector {
@@ -107,28 +112,47 @@ struct ContentView: View {
     }
 
     private func handleFrame(_ pixelBuffer: CVPixelBuffer) {
-        // Frame skipping for performance (detect every 2 frames)
         guard game.isReady else { return }
 
         detector.detect(image: pixelBuffer) { newDetections in
             DispatchQueue.main.async {
                 self.detections = newDetections
 
-                // Process the best detection
+                // Process the best detection with stability check
                 if let bestDetection = newDetections.first {
                     let cardClass = bestDetection.className
 
-                    if !validatedCards.contains(cardClass) {
-                        validatedCards.insert(cardClass)
-                        let points = game.addCard(cardClass)
+                    // Check if same card detected consecutively
+                    if cardClass == lastDetectedCard {
+                        consecutiveFrames += 1
+                    } else {
+                        // Different card, reset counter
+                        lastDetectedCard = cardClass
+                        consecutiveFrames = 1
+                    }
 
-                        // Play sound feedback
-                        if points > 0 {
-                            playCardSound()
-                        } else {
-                            playPointsSound()
+                    // Only validate if stable for required frames
+                    if consecutiveFrames >= stabilityFramesRequired {
+                        if !validatedCards.contains(cardClass) {
+                            validatedCards.insert(cardClass)
+                            let points = game.addCard(cardClass)
+
+                            // Play sound feedback
+                            if points > 0 {
+                                playCardSound()
+                            } else {
+                                playPointsSound()
+                            }
+
+                            // Reset stability after validation
+                            lastDetectedCard = nil
+                            consecutiveFrames = 0
                         }
                     }
+                } else {
+                    // No detection, reset
+                    lastDetectedCard = nil
+                    consecutiveFrames = 0
                 }
             }
         }

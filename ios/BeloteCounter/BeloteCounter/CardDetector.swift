@@ -69,7 +69,7 @@ class CardDetector {
 
             let detections = results.compactMap { observation -> Detection? in
                 guard let label = observation.labels.first,
-                      label.confidence > 0.3 else { return nil }
+                      label.confidence > 0.5 else { return nil }  // Increased from 0.3 to 0.5
 
                 return Detection(
                     className: label.identifier,
