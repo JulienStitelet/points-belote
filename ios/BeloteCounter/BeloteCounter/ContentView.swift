@@ -71,7 +71,7 @@ struct ContentView: View {
                                 }) {
                                     Text("🔄 Reset")
                                         .padding()
-                                        .background(Color.blue)
+                                        .background(Color(red: 230/255, green: 57/255, blue: 70/255))
                                         .foregroundColor(.white)
                                         .cornerRadius(10)
                                 }
@@ -83,7 +83,7 @@ struct ContentView: View {
                                 }) {
                                     Text("🎯 Changer Mode")
                                         .padding()
-                                        .background(Color.orange)
+                                        .background(Color(red: 242/255, green: 100/255, blue: 25/255))
                                         .foregroundColor(.white)
                                         .cornerRadius(10)
                                 }
@@ -228,14 +228,16 @@ struct ModeSelectorView: View {
 
     var body: some View {
         ZStack {
-            // Background color #000b2e
-            Color(red: 0/255, green: 11/255, blue: 46/255)
+            // Background color #0B132B
+            Color(red: 11/255, green: 19/255, blue: 43/255)
                 .ignoresSafeArea()
 
             VStack(spacing: 20) {
                 Text("Choisissez un mode")
                     .font(.largeTitle)
                     .foregroundColor(.white)
+                    .fontWeight(.bold)
+                    .shadow(color: .black.opacity(0.8), radius: 4, x: 0, y: 2)
                     .padding()
 
                 ForEach(BeloteMode.allCases, id: \.self) { mode in
@@ -245,7 +247,7 @@ struct ModeSelectorView: View {
                         Text(mode.displayName)
                             .frame(maxWidth: .infinity)
                             .padding()
-                            .background(Color.blue)
+                            .background(Color(red: 242/255, green: 100/255, blue: 25/255))
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     }

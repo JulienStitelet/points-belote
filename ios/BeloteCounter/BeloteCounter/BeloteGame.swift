@@ -11,12 +11,12 @@ enum BeloteMode: String, CaseIterable {
 
     var displayName: String {
         switch self {
-        case .atoutCoeur: return "♥️ Atout Coeur"
-        case .atoutPique: return "♠️ Atout Pique"
-        case .atoutCarreau: return "♦️ Atout Carreau"
-        case .atoutTrefle: return "♣️ Atout Trèfle"
+        case .atoutPique: return "Atout ♠️"
+        case .atoutCoeur: return "Atout ♥️"
+        case .atoutCarreau: return "Atout ♦️"
+        case .atoutTrefle: return "Atout ♣️"
         case .sansAtout: return "Sans Atout"
-        case .toutAtout: return "Tout Atout"
+        case .toutAtout: return "Tout Atout ♠️ ♥️ ♦️ ♣️"
         }
     }
 
