@@ -24,6 +24,18 @@
 		CB344AFD2FC58C6C00C9CF10 /* sound_10.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB344AF32FC58C6C00C9CF10 /* sound_10.wav */; };
 		CB344B012FC5979E00C9CF10 /* splash_screen.png in Resources */ = {isa = PBXBuildFile; fileRef = CB344B002FC5979E00C9CF10 /* splash_screen.png */; };
 		CB344B032FC5979E00C9CF10 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB344B022FC5979E00C9CF10 /* LaunchScreen.storyboard */; };
+		CB344B0E2FC5A4DF00C9CF10 /* belote.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB344B032FC5A4DF00C9CF10 /* belote.wav */; };
+		CB344B0F2FC5A4DF00C9CF10 /* quatorze.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB344B082FC5A4DF00C9CF10 /* quatorze.wav */; };
+		CB344B102FC5A4DF00C9CF10 /* sept.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB344B0B2FC5A4DF00C9CF10 /* sept.wav */; };
+		CB344B112FC5A4DF00C9CF10 /* as.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB344B022FC5A4DF00C9CF10 /* as.wav */; };
+		CB344B122FC5A4DF00C9CF10 /* huit.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB344B062FC5A4DF00C9CF10 /* huit.wav */; };
+		CB344B132FC5A4DF00C9CF10 /* neuf.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB344B072FC5A4DF00C9CF10 /* neuf.wav */; };
+		CB344B142FC5A4DF00C9CF10 /* roi.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB344B0A2FC5A4DF00C9CF10 /* roi.wav */; };
+		CB344B152FC5A4DF00C9CF10 /* dame.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB344B042FC5A4DF00C9CF10 /* dame.wav */; };
+		CB344B162FC5A4DF00C9CF10 /* rebelote.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB344B092FC5A4DF00C9CF10 /* rebelote.wav */; };
+		CB344B172FC5A4DF00C9CF10 /* dix.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB344B052FC5A4DF00C9CF10 /* dix.wav */; };
+		CB344B182FC5A4DF00C9CF10 /* valet.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB344B0C2FC5A4DF00C9CF10 /* valet.wav */; };
+		CB344B192FC5A4DF00C9CF10 /* vingt.wav in Resources */ = {isa = PBXBuildFile; fileRef = CB344B0D2FC5A4DF00C9CF10 /* vingt.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +56,18 @@
 		CB344AF72FC58C6C00C9CF10 /* sound_low.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sound_low.wav; sourceTree = "<group>"; };
 		CB344B002FC5979E00C9CF10 /* splash_screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_screen.png; sourceTree = "<group>"; };
 		CB344B022FC5979E00C9CF10 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CB344B022FC5A4DF00C9CF10 /* as.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = as.wav; sourceTree = "<group>"; };
+		CB344B032FC5A4DF00C9CF10 /* belote.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = belote.wav; sourceTree = "<group>"; };
+		CB344B042FC5A4DF00C9CF10 /* dame.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dame.wav; sourceTree = "<group>"; };
+		CB344B052FC5A4DF00C9CF10 /* dix.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dix.wav; sourceTree = "<group>"; };
+		CB344B062FC5A4DF00C9CF10 /* huit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = huit.wav; sourceTree = "<group>"; };
+		CB344B072FC5A4DF00C9CF10 /* neuf.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = neuf.wav; sourceTree = "<group>"; };
+		CB344B082FC5A4DF00C9CF10 /* quatorze.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = quatorze.wav; sourceTree = "<group>"; };
+		CB344B092FC5A4DF00C9CF10 /* rebelote.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rebelote.wav; sourceTree = "<group>"; };
+		CB344B0A2FC5A4DF00C9CF10 /* roi.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = roi.wav; sourceTree = "<group>"; };
+		CB344B0B2FC5A4DF00C9CF10 /* sept.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sept.wav; sourceTree = "<group>"; };
+		CB344B0C2FC5A4DF00C9CF10 /* valet.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = valet.wav; sourceTree = "<group>"; };
+		CB344B0D2FC5A4DF00C9CF10 /* vingt.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = vingt.wav; sourceTree = "<group>"; };
 		CC0001 /* BeloteCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeloteCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -61,6 +85,18 @@
 		EE0001 = {
 			isa = PBXGroup;
 			children = (
+				CB344B022FC5A4DF00C9CF10 /* as.wav */,
+				CB344B032FC5A4DF00C9CF10 /* belote.wav */,
+				CB344B042FC5A4DF00C9CF10 /* dame.wav */,
+				CB344B052FC5A4DF00C9CF10 /* dix.wav */,
+				CB344B062FC5A4DF00C9CF10 /* huit.wav */,
+				CB344B072FC5A4DF00C9CF10 /* neuf.wav */,
+				CB344B082FC5A4DF00C9CF10 /* quatorze.wav */,
+				CB344B092FC5A4DF00C9CF10 /* rebelote.wav */,
+				CB344B0A2FC5A4DF00C9CF10 /* roi.wav */,
+				CB344B0B2FC5A4DF00C9CF10 /* sept.wav */,
+				CB344B0C2FC5A4DF00C9CF10 /* valet.wav */,
+				CB344B0D2FC5A4DF00C9CF10 /* vingt.wav */,
 				CB344B002FC5979E00C9CF10 /* splash_screen.png */,
 				CB344AF22FC58C6C00C9CF10 /* sound_0.wav */,
 				CB344AF32FC58C6C00C9CF10 /* sound_10.wav */,
@@ -162,6 +198,18 @@
 				CB344B012FC5979E00C9CF10 /* splash_screen.png in Resources */,
 				CB344B032FC5979E00C9CF10 /* LaunchScreen.storyboard in Resources */,
 				CB344AFA2FC58C6C00C9CF10 /* sound_low.wav in Resources */,
+				CB344B0E2FC5A4DF00C9CF10 /* belote.wav in Resources */,
+				CB344B0F2FC5A4DF00C9CF10 /* quatorze.wav in Resources */,
+				CB344B102FC5A4DF00C9CF10 /* sept.wav in Resources */,
+				CB344B112FC5A4DF00C9CF10 /* as.wav in Resources */,
+				CB344B122FC5A4DF00C9CF10 /* huit.wav in Resources */,
+				CB344B132FC5A4DF00C9CF10 /* neuf.wav in Resources */,
+				CB344B142FC5A4DF00C9CF10 /* roi.wav in Resources */,
+				CB344B152FC5A4DF00C9CF10 /* dame.wav in Resources */,
+				CB344B162FC5A4DF00C9CF10 /* rebelote.wav in Resources */,
+				CB344B172FC5A4DF00C9CF10 /* dix.wav in Resources */,
+				CB344B182FC5A4DF00C9CF10 /* valet.wav in Resources */,
+				CB344B192FC5A4DF00C9CF10 /* vingt.wav in Resources */,
 				CB344AFB2FC58C6C00C9CF10 /* sound_11.wav in Resources */,
 				CB344AFC2FC58C6C00C9CF10 /* sound_20.wav in Resources */,
 				CB344AFD2FC58C6C00C9CF10 /* sound_10.wav in Resources */,

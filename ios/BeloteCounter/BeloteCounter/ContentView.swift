@@ -10,13 +10,18 @@ struct ContentView: View {
     private let detector = CardDetector()
     private var frameSkipCounter = 0
 
-    // Audio players for custom sounds (by point value)
+    // Audio players for spoken card-name sounds
     @State private var audioPlayers: [String: AVAudioPlayer] = [:]
 
     // Stability tracking
     @State private var lastDetectedCard: String?
     @State private var consecutiveFrames = 0
     private let stabilityFramesRequired = 5  // Require 5 consecutive frames
+
+    // Fires 2s after the last detection to announce the running total
+    @State private var silenceTimer: Timer?
+    @State private var speechSynthesizer = AVSpeechSynthesizer()
+    private let silenceInterval: TimeInterval = 2.0
 
     var body: some View {
         ZStack {
@@ -68,6 +73,8 @@ struct ContentView: View {
                                 Button(action: {
                                     game.reset()
                                     validatedCards.removeAll()
+                                    silenceTimer?.invalidate()
+                                    silenceTimer = nil
                                 }) {
                                     Text("🔄 Reset")
                                         .padding()
@@ -80,6 +87,8 @@ struct ContentView: View {
                                     showModeSelector = true
                                     game.reset()
                                     validatedCards.removeAll()
+                                    silenceTimer?.invalidate()
+                                    silenceTimer = nil
                                 }) {
                                     Text("🎯 Changer Mode")
                                         .padding()
@@ -121,6 +130,9 @@ struct ContentView: View {
                 if let bestDetection = newDetections.first {
                     let cardClass = bestDetection.className
 
+                    // Cards are visible — push the total announcement back
+                    scheduleTotalAnnouncement()
+
                     // Check if same card detected consecutively
                     if cardClass == lastDetectedCard {
                         consecutiveFrames += 1
@@ -134,10 +146,13 @@ struct ContentView: View {
                     if consecutiveFrames >= stabilityFramesRequired {
                         if !validatedCards.contains(cardClass) {
                             validatedCards.insert(cardClass)
-                            let points = game.addCard(cardClass)
+                            _ = game.addCard(cardClass)
 
-                            // Play sound feedback based on points
-                            playSoundForPoints(points)
+                            // Per-card name wav (kept commented in case we want it back)
+                            // playSoundForCard(cardClass)
+
+                            // Speak the running total after each card
+                            speakRunningTotal()
 
                             // Reset stability after validation
                             lastDetectedCard = nil
@@ -163,12 +178,10 @@ struct ContentView: View {
 
     private func loadAudioFiles() {
         let soundFiles = [
-            "sound_0",    // 0 points
-            "sound_10",   // 10 points
-            "sound_11",   // 11 points (As)
-            "sound_14",   // 14 points (9 d'atout)
-            "sound_20",   // 20 points (Valet d'atout)
-            "sound_low"   // Points faibles (Roi, Dame)
+            "sept", "huit", "neuf", "dix",
+            "valet", "dame", "roi", "as",
+            "quatorze", "vingt",
+            "belote", "rebelote"
         ]
 
         print("🔊 Loading audio files...")
@@ -177,6 +190,8 @@ struct ContentView: View {
                 let url = URL(fileURLWithPath: path)
                 do {
                     let player = try AVAudioPlayer(contentsOf: url)
+                    player.enableRate = true
+                    player.rate = 1.2
                     player.prepareToPlay()
                     audioPlayers[soundName] = player
                     print("✅ Loaded \(soundName).wav")
@@ -190,36 +205,100 @@ struct ContentView: View {
         print("🔊 Total loaded: \(audioPlayers.count)/\(soundFiles.count)")
     }
 
-    private func playSoundForPoints(_ points: Int) {
-        let soundName: String
+    private func soundName(for cardClass: String) -> String? {
+        guard cardClass.count >= 2 else { return nil }
+        let value = String(cardClass.dropLast())
+        let suit = String(cardClass.last!)
+        let isAtout = game.mode?.atoutSuit == suit
 
-        switch points {
-        case 0:
-            soundName = "sound_0"
-        case 10:
-            soundName = "sound_10"
-        case 11:
-            soundName = "sound_11"
-        case 14:
-            soundName = "sound_14"
-        case 20:
-            soundName = "sound_20"
-        case 1...4:
-            soundName = "sound_low"  // Roi, Dame, 8, 7
-        default:
-            soundName = "sound_low"  // Fallback
+        // Atout-only point announcements
+        if isAtout {
+            if value == "9" { return "quatorze" }
+            if value == "J" { return "vingt" }
         }
 
-        print("🎵 Playing sound for \(points) points: \(soundName)")
+        switch value {
+        case "7": return "sept"
+        case "8": return "huit"
+        case "9": return "neuf"
+        case "10": return "dix"
+        case "J": return "valet"
+        case "Q": return "dame"
+        case "K": return "roi"
+        case "A": return "as"
+        default: return nil
+        }
+    }
 
-        if let player = audioPlayers[soundName] {
+    private func playSoundForCard(_ cardClass: String) {
+        guard let name = soundName(for: cardClass) else {
+            print("⚠️ No sound mapped for \(cardClass)")
+            return
+        }
+
+        print("🎵 Playing \(name) for \(cardClass)")
+
+        if let player = audioPlayers[name] {
             player.currentTime = 0
             player.play()
-            print("✅ Playing \(soundName)")
         } else {
-            print("❌ No player found for \(soundName)")
-            print("Available players: \(audioPlayers.keys.joined(separator: ", "))")
+            print("❌ No player found for \(name)")
         }
+    }
+
+    private func scheduleTotalAnnouncement() {
+        silenceTimer?.invalidate()
+        silenceTimer = Timer.scheduledTimer(withTimeInterval: silenceInterval, repeats: false) { _ in
+            emitTotalPoints()
+        }
+    }
+
+    private func emitTotalPoints() {
+        guard !game.cardsPlayed.isEmpty else { return }
+
+        let cardsTotal = game.totalPoints
+        let beloteBonus = beloteRebeloteCount * 20
+        let grandTotal = cardsTotal + beloteBonus
+
+        let text: String
+        if beloteBonus > 0 {
+            text = "\(cardsTotal) points plus \(beloteBonus) points de belote rebelote égale \(grandTotal) points"
+        } else {
+            text = "\(cardsTotal) points"
+        }
+
+        print("🗣 Announcing total: \(text)")
+        speak(text)
+    }
+
+    private func speakRunningTotal() {
+        // Interrupt any in-flight utterance so rapid scans don't pile up
+        speechSynthesizer.stopSpeaking(at: .immediate)
+        speak("\(game.totalPoints)")
+    }
+
+    private func speak(_ text: String) {
+        let utterance = AVSpeechUtterance(string: text)
+        utterance.voice = AVSpeechSynthesisVoice(language: "fr-FR")
+        utterance.rate = 0.52           // snappy scan feedback (default 0.5)
+        utterance.pitchMultiplier = 1.15
+        speechSynthesizer.speak(utterance)
+    }
+
+    private var beloteRebeloteCount: Int {
+        guard let mode = game.mode else { return 0 }
+        let atoutSuits: [String]
+        switch mode {
+        case .atoutCoeur:   atoutSuits = ["H"]
+        case .atoutPique:   atoutSuits = ["S"]
+        case .atoutCarreau: atoutSuits = ["D"]
+        case .atoutTrefle:  atoutSuits = ["C"]
+        case .toutAtout:    atoutSuits = ["H", "S", "D", "C"]
+        case .sansAtout:    atoutSuits = []
+        }
+        return atoutSuits.filter { suit in
+            validatedCards.contains("K\(suit)") && validatedCards.contains("Q\(suit)")
+        }.count
     }
 }
 
