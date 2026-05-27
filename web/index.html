@@ -1,1 +1,59 @@
-hello
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Belote Counter</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Mode selection overlay -->
+        <div id="mode-selector" class="overlay">
+            <h1>Choisissez un mode</h1>
+            <div class="mode-buttons">
+                <button onclick="testSound()">🔊 Test Son</button>
+                <button onclick="setMode('ATOUT_COEUR')">♥️ Atout Coeur</button>
+                <button onclick="setMode('ATOUT_PIQUE')">♠️ Atout Pique</button>
+                <button onclick="setMode('ATOUT_CARREAU')">♦️ Atout Carreau</button>
+                <button onclick="setMode('ATOUT_TREFLE')">♣️ Atout Trèfle</button>
+                <button onclick="setMode('SANS_ATOUT')">Sans Atout</button>
+                <button onclick="setMode('TOUT_ATOUT')">Tout Atout</button>
+            </div>
+        </div>
+
+        <!-- Main game view -->
+        <div id="game-view" style="display: none;">
+            <!-- Camera feed -->
+            <video id="camera" autoplay playsinline></video>
+            <canvas id="overlay"></canvas>
+
+            <!-- Score display -->
+            <div id="score-bar">
+                <span id="points-display">Points: 0 | Cartes: 0/32</span>
+            </div>
+
+            <!-- Mode display -->
+            <div id="mode-display"></div>
+
+            <!-- Last card notification -->
+            <div id="last-card"></div>
+
+            <!-- Controls -->
+            <div id="controls">
+                <button onclick="testSound()">🔊 Test Son</button>
+                <button onclick="resetGame()">🔄 Reset</button>
+                <button onclick="changeMode()">🎯 Changer Mode</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
+    <script src="detector.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
